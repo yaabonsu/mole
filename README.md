@@ -28,6 +28,19 @@ Enable the Apache service using systemctl enable httpd.
 Start the Apache service using systemctl start httpd.
 After running the script, you should have a fully functional Apache web server with the synchronized content from the git hub repository.
 
+Summary of bash script is below
+#!/bin/bash
+sudo su
+yum update -y
+yum install -y httpd
+cd /var/www/html
+wget https://github.com/yaabonsu/mole/archive/refs/heads/main.zip
+unzip main.zip
+cp -r mole-main/* /var/www/html/
+rm -rf mole-main main.zip
+systemctl enable httpd 
+systemctl start httpd
+
 Disclaimer
 Please use this script at your own risk. Review the script carefully before running it, and ensure you have appropriate backups and permissions in place. 
 The author is not responsible for any damages or issues caused by using this script.
